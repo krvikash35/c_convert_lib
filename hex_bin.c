@@ -7,6 +7,11 @@ void hexbin_to_hexstr(unsigned char *hexbin, unsigned int binsz, char * hexstr){
   unsigned char * in = hexbin;
   char * out = hexstr;
   for( i=0; i<binsz; i++ ){
+    printf("hex :%x\n", in[0]);
+    printf("hex1st : %d\n", *in>>4);
+    printf("hex1st & 0xF : %d\n", (*in>>4) & 0xF);
+    printf("hex2nd : %d\n", *in);
+    printf("hex2nd & 0xF :%d\n", (*in) & 0xF);
     out[0] = hex[ (*in>>4) & 0xF ];
     out[1] = hex[ (*in)    & 0xF ];
     in = in + 1;
@@ -30,7 +35,7 @@ void hexstr_to_hexbin(char *hexstr, unsigned int strsize, unsigned char * hexbin
 }
 
 int main(){
-  unsigned char bin[] = {0xFF, 0xAB, 0xAF, 0xEF};
+  unsigned char bin[] = {0xAB, 0xFF, 0xAF, 0xEF};
   char ascii[8];
   printf("converting Binary to Ascii...\n" );
   int i;
